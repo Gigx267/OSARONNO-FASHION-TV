@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events • Osaronno Fashion TV</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Reuse all styles from your home page - paste your full <style> block here or link to external CSS */
+    /* For brevity, I'm only adding/changing what's new or needed for events page */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #0b0a0a; font-family: 'Inter', system-ui, sans-serif; color: #f0e9e1; line-height: 1.5; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 2rem; }
+    
+    /* Navbar (same as home) */
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 2rem; border-bottom: 1px solid rgba(255,215,170,0.15); flex-wrap: wrap; }
+    .logo { font-size: 1.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 6px; color: #f5d7b5; border-right: 2px solid #c9a87c; padding-right: 1.2rem; }
+    .logo span { font-weight: 600; color: #fcf3e7; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 3rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2.5px; }
+    .nav-links a { color: #e1cfba; text-decoration: none; transition: color 0.3s; font-weight: 300; }
+    .nav-links a:hover { color: #fae1bd; border-bottom: 1px solid #b59470; padding-bottom: 4px; }
+
+    /* Section title (reused) */
+    .section-title { font-size: 2.5rem; font-weight: 300; text-align: center; margin-bottom: 4rem; color: #f1decb; }
+    .section-title span { border-bottom: 3px solid #b59163; padding-bottom: 0.5rem; }
+
+    /* Events grid */
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem; margin-bottom: 6rem; }
+
+    .event-card {
+      background: #1e1b17;
+      border: 1px solid #352f28;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .event-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); border-color: #aa855b; }
+    .event-image { height: 320px; background-size: cover; background-position: center; position: relative; }
+    .event-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; width: 100%; height: 60%;
+      background: linear-gradient(to top, rgba(11,10,10,0.9), transparent);
+    }
+    .event-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: linear-gradient(135deg, #b59163, #c9a87c);
+      color: #0b0a0a;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .event-content { padding: 2.5rem; position: relative; z-index: 2; }
+    .event-title { font-size: 2.2rem; font-weight: 400; color: #f5d7b5; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+    .event-date { font-size: 1.1rem; color: #c9a87c; margin-bottom: 1.5rem; letter-spacing: 1px; }
+    .event-desc { font-size: 1.05rem; color: #cfbcab; margin-bottom: 2rem; line-height: 1.6; }
+    .event-cta a {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #b59163, #c9a87c);
+      color: #0b0a0a;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .event-cta a:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(181,145,99,0.3); }
+
+    /* Upcoming highlight (larger for next event) */
+    .upcoming-highlight { margin: 6rem 0; text-align: center; }
+    .upcoming-highlight .event-title { font-size: clamp(3rem, 8vw, 5rem); }
+
+    /* Form styling for registration */
+    .registration-form { max-width: 700px; margin: 4rem auto; background: #1e1b17; padding: 3rem; border: 1px solid #352f28; border-radius: 8px; }
+    .form-group { margin-bottom: 1.8rem; }
+    .form-group label { display: block; margin-bottom: 0.6rem; color: #c9a87c; font-size: 1rem; letter-spacing: 1px; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 1rem; background: #0f0d0b; border: 1px solid #352f28; color: #f0e9e1; border-radius: 4px; font-size: 1rem;
+    }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #b59163; }
+    .submit-btn {
+      background: linear-gradient(135deg, #b59163, #c9a87c); color: #0b0a0a; border: none; padding: 1.2rem 3rem; font-size: 1.1rem;
+      letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: all 0.3s;
+    }
+    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(181,145,99,0.3); }
+
+    /* Footer (same as home) */
+    .footer { background: #070605; padding: 3rem 2rem 2rem; border-top: 2px solid #3f3429; }
+    .footer-main { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
+    .footer-logo { font-size: 1.8rem; letter-spacing: 4px; color: #c9af90; font-weight: 300; }
+    .footer-logo span { font-weight: 600; color: #f0dac5; }
+    .social { display: flex; gap: 2rem; font-size: 1.8rem; }
+    .social a { color: #9e8469; transition: color 0.3s; }
+    .social a:hover { color: #ebc9a6; }
+    .footer-bottom { text-align: center; font-size: 0.8rem; letter-spacing: 1px; color: #6d5d4b; border-top: 1px solid #2e271f; padding-top: 2rem; }
+
+    @media (max-width: 900px) {
+      .events-grid { grid-template-columns: 1fr; }
+      .navbar { flex-direction: column; gap: 1rem; }
+      .logo { border-right: none; }
+      .nav-links { justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo"><span>OSARONNO</span> FASHION TV</div>
+      <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="events.html">EVENTS</a>
+        <a href="heritage.html">HERITAGE</a>
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="events-section" style="padding: 6rem 2rem 4rem; background: #0f0d0b;">
+    <div class="container">
+      <h2 class="section-title"><span>Our Events</span></h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 4rem; font-size: 1.2rem; color: #cfbcab;">
+        From intimate designer gatherings to large-scale business summits, Osaronno Fashion TV creates spaces where creativity, culture, and commerce converge — beyond the runway.
+      </p>
+
+      <div class="events-grid">
+
+        <!-- 1. Meet & Greet Fashion Designers Cocktail (Recent/Past Event) -->
+        <div class="event-card">
+          <div class="event-image" style="background-image: url('https://i.pinimg.com/736x/e9/8f/20/e98f20fd963aaebf71bc1330f3245daa.jpg');">
+            <span class="event-badge">Recent Highlight</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Meet & Greet Fashion Designers Cocktail</h3>
+            <div class="event-date">February 2026 • Abuja</div>
+            <p class="event-desc">
+              An elegant evening where brilliant fashion minds, trendsetters, and style lovers united under one sophisticated atmosphere. 
+              Creativity met conversation through inspiring designs, meaningful connections, and celebrations of art, passion, and the business of fashion.
+            </p>
+            <div class="event-cta">
+              <a href="https://www.instagram.com/osaronnofashiontv" target="_blank">View Highlights on Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Fashion Business Summit (Upcoming - with Registration) -->
+        <div class="event-card" style="border-color: #b59163; box-shadow: 0 0 30px rgba(181,145,99,0.2);">
+          <div class="event-image" style="background-image: url('p1 (1).PNG');">
+            <span class="event-badge">Next Event</span>
+          </div>
+          <div class="event-content">
+            <h3 class="event-title">Fashion Business Summit</h3>
+            <div class="event-date">April 2nd, 2026 • 9:00 AM – 7:00 PM</div>
+            <p class="event-desc">
+              Join industry leaders, designers, entrepreneurs, and visionaries for a full-day immersion into the business of African fashion. 
+              Keynote sessions, panels, networking, trend insights, and live showcases — where heritage fuels innovation and the future is boldly shaped.
+            </p>
+            <p style="color: #d6b28c; font-weight: 500; margin: 1.5rem 0;">Venue: Shehu Musa Yar'Adua Centre, Abuja, Nigeria</p>
+
+            <!-- Registration Form via Formspree -->
+            <div class="registration-form">
+              <h4 style="text-align: center; color: #f5d7b5; margin-bottom: 2rem; font-size: 1.6rem;">Register Your Interest</h4>
+              <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST"> <!-- Replace with your real Formspree endpoint -->
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" placeholder="e.g. 0704 XXX XXXX">
+                </div>
+                <div class="form-group">
+                  <label for="message">What interests you most? (optional)</label>
+                  <textarea id="message" name="message" rows="4" placeholder="e.g. Networking, Keynotes, Investment opportunities..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Registration</button>
+              </form>
+            </div>
+
+            <div style="margin-top: 2rem; text-align: center; color: #aa9885;">
+              <p>For inquiries: 📞 0704 5333 3306 | 0909 9998 8055</p>
+              <p>Follow @OsaronnonofashionTV on Instagram • YouTube • TikTok</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="upcoming-highlight">
+        <h3 class="event-title" style="margin-bottom: 1rem;">More Events Coming Soon</h3>
+        <p style="color: #c4a27c; font-size: 1.3rem; font-style: italic;">
+          Stay tuned for exclusive announcements, heritage showcases, and more cultural movements.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (same as home) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-logo"><span>OSARONNO</span> FASHION TV</div>
+        <div class="social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-spotify"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Osaronno Fashion TV — where fashion meets influence, culture meets royalty, and style becomes a statement.</p>
+        <p style="margin-top: 1rem;"><i class="fas fa-route"></i> Beyond the Runway. Beyond the Ordinary. <i class="fas fa-crown" style="font-size: 0.7rem;"></i></p>
+      </div>
+    </div>
+  </footer>
+
+  <div style="background: #19130d; height: 4px; width: 100%;"></div>
+
+</body>
+</html>
