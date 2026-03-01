@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us • Osaronno Fashion TV</title>
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0a0a;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #f0e9e1;
+      line-height: 1.6;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navbar – same as other pages */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 2rem;
+      border-bottom: 1px solid rgba(255, 215, 170, 0.15);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: #f5d7b5;
+      border-right: 2px solid #c9a87c;
+      padding-right: 1.2rem;
+    }
+
+    .logo span {
+      font-weight: 600;
+      color: #fcf3e7;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+    }
+
+    .nav-links a {
+      color: #e1cfba;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .nav-links a:hover {
+      color: #fae1bd;
+      border-bottom: 1px solid #b59470;
+      padding-bottom: 4px;
+    }
+
+    /* Section styling */
+    .contact-hero {
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      background: linear-gradient(to bottom, #0f0d0b, #0b0a0a);
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 300;
+      color: #f5d7b5;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-hero p {
+      max-width: 780px;
+      margin: 0 auto 3rem;
+      font-size: 1.25rem;
+      color: #cfbcab;
+      line-height: 1.7;
+    }
+
+    /* Main contact content */
+    .contact-content {
+      padding: 4rem 2rem 8rem;
+      background: #0f0d0b;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Info block */
+    .contact-info {
+      background: #1e1b17;
+      border: 1px solid #352f28;
+      border-radius: 8px;
+      padding: 3.5rem 2.8rem;
+    }
+
+    .info-block {
+      margin-bottom: 2.8rem;
+    }
+
+    .info-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-label {
+      font-size: 1rem;
+      letter-spacing: 2.5px;
+      color: #ae8d68;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .info-value {
+      font-size: 1.25rem;
+      color: #ebd6bf;
+    }
+
+    .info-value a {
+      color: #d6b28c;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .info-value a:hover {
+      color: #fae1bd;
+    }
+
+    .phone-numbers a {
+      display: block;
+      margin: 0.6rem 0;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .social-icons a {
+      font-size: 2.2rem;
+      color: #9e8469;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ebc9a6;
+      transform: translateY(-4px);
+    }
+
+    /* Form block */
+    .contact-form-wrapper {
+      background: #1e1b17;
+      border: 1px solid #352f28;
+      border-radius: 8px;
+      padding: 3.5rem 3rem;
+    }
+
+    .form-title {
+      color: #f5d7b5;
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: 1.5px;
+    }
+
+    .form-group {
+      margin-bottom: 2.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.9rem;
+      color: #c9a87c;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1.2rem 1.4rem;
+      background: #0f0d0b;
+      border: 1px solid #352f28;
+      color: #f0e9e1;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #b59163;
+      box-shadow: 0 0 0 3px rgba(181, 145, 99, 0.15);
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      background: linear-gradient(135deg, #b59163, #c9a87c);
+      color: #0b0a0a;
+      border: none;
+      padding: 1.3rem 3.5rem;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s;
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(181,145,99,0.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-hero {
+        padding: 6rem 2rem 3rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-hero h1 {
+        font-size: 2.8rem;
+      }
+      .contact-content {
+        padding: 3rem 1.5rem 6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo"><span>OSARONNO</span> FASHION TV</div>
+      <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="events.html">EVENTS</a>
+       
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>
+        We're always excited to connect with designers, brands, partners, media, sponsors, and anyone passionate about the future of African fashion and beauty. 
+        Reach out — let's create something extraordinary together.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-content">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <div class="info-block">
+            <span class="info-label">General Enquiries</span>
+            <span class="info-value">
+              <a href="mailto:info@osaronnofashiontv.com">info@osaronnofashiontv.com</a>
+            </span>
+          </div>
+
+          <div class="info-block">
+            <span class="info-label">Events & Summit Inquiries</span>
+            <span class="info-value">
+              <a href="mailto:events@osaronnofashiontv.com">events@osaronnofashiontv.com</a>
+            </span>
+          </div>
+
+          <div class="info-block">
+            <span class="info-label">Phone / WhatsApp</span>
+            <span class="info-value phone-numbers">
+              <a href="tel:+23470453333306">0704 5333 3306</a>
+              <a href="tel:+23490999988055">0909 9998 8055</a>
+            </span>
+          </div>
+
+          <div class="info-block">
+            <span class="info-label">Connect With Us</span>
+            <div class="social-icons">
+              <a href="https://instagram.com/osaronnofashiontv" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" target="_blank" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://youtube.com/@osaronnofashiontv" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+          <h3 class="form-title">Send a Message</h3>
+
+          <!-- Replace YOUR_FORMSPREE_ID with your actual Formspree endpoint -->
+          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="Full name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required placeholder="e.g. Collaboration, Event Inquiry, Partnership">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="7" required placeholder="How can we work together or support your vision?"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+ <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-logo"><span>OSARONNO</span> FASHION TV</div>
+        <div class="social">
+          <a href="https://www.instagram.com/osaronnofashiontv/"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/OsaronnoFashionTV"><i class="fab fa-x-twitter"></i></a>
+          <a href=" https://www.youtube.com/@OsaronnoFashionTV"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.youtube.com/@OsaronnoFashionTV "><i class="fab fa-spotify"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Osaronno Fashion TV — where fashion meets influence, culture meets royalty, and style becomes a statement.</p>
+        <p style="margin-top: 1rem;"><i class="fas fa-route"></i>  Beyond the Runway.  Beyond the Ordinary.  <i class="fas fa-crown" style="font-size: 0.7rem;"></i></p>
+      </div>
+    </div>
+  </footer>
+  <div style="background: #19130d; height: 4px; width: 100%;"></div>
+
+</body>
+</html>
