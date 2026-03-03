@@ -5,858 +5,231 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Osaronno Fashion TV • Beyond the Runway</title>
   <link rel="icon" type="image/png" href="./p1 (2).PNG">
-  <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet">
+  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg-dark: #0b0a0a;
+      --gold-light: #f5d7b5;
+      --gold-mid: #c9a87c;
+      --gold-deep: #b59163;
+      --text-main: #f0e9e1;
+      --text-muted: #cfbcab;
+      --transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: #0b0a0a;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      color: #f0e9e1;
-      line-height: 1.5;
-      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* inter font via google */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
 
-    h1, h2, h3 {
-      font-weight: 400;
-      letter-spacing: 0.02em;
-    }
-
-    .container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* header / nav */
+    /* --- Luxury Navigation --- */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem 2rem;
-      border-bottom: 1px solid rgba(255, 215, 170, 0.15);
-      flex-wrap: wrap;
+      padding: 1.5rem 4rem;
+      position: fixed;
+      top: 0; width: 100%; z-index: 1000;
+      background: rgba(11, 10, 10, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(181, 145, 99, 0.1);
     }
+    .logo { font-size: 1.4rem; font-weight: 200; text-transform: uppercase; letter-spacing: 5px; color: var(--gold-light); }
+    .logo span { font-weight: 600; color: #fff; }
+    .nav-links { display: flex; gap: 3rem; }
+    .nav-links a { 
+      color: var(--text-muted); text-decoration: none; font-size: 0.75rem; 
+      text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); 
+    }
+    .nav-links a:hover { color: #fff; }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 6px;
-      color: #f5d7b5;
-      border-right: 2px solid #c9a87c;
-      padding-right: 1.2rem;
-    }
-    .logo span {
-      font-weight: 600;
-      color: #fcf3e7;
-      letter-spacing: 2px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 3rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-    }
-    .nav-links a {
-      color: #e1cfba;
-      text-decoration: none;
-      transition: color 0.3s;
-      font-weight: 300;
-    }
-    .nav-links a:hover {
-      color: #fae1bd;
-      border-bottom: 1px solid #b59470;
-      padding-bottom: 4px;
-    }
-
-    /* hero section */
+    /* --- Cinematic Hero --- */
     .hero {
-      min-height: 80vh;
+      height: 100vh;
       display: flex;
       align-items: center;
-      background: radial-gradient(circle at 70% 30%, #1f1b16 0%, #080705 90%);
-      position: relative;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(11,10,10,1)), 
+                  url('https://i.pinimg.com/1200x/38/a8/ca/38a8ca229badd6aba9e22aa7620ceefd.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .hero-content { max-width: 900px; }
+    .hero-sup { font-size: 0.8rem; letter-spacing: 10px; text-transform: uppercase; color: var(--gold-mid); margin-bottom: 2rem; }
+    .hero h1 { 
+      font-size: clamp(2.5rem, 8vw, 5.5rem); 
+      font-weight: 200; line-height: 1.1; 
+      letter-spacing: -2px; text-transform: uppercase;
+    }
+    .hero h1 b { 
+      font-weight: 600; 
+      background: linear-gradient(to right, var(--gold-light), var(--gold-deep));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* --- Editorial About Section --- */
+    .about-section { padding: 10rem 0; background: #0b0a0a; }
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-lead { font-size: 2rem; line-height: 1.3; font-weight: 300; color: var(--gold-light); margin-bottom: 2rem; }
+    .about-text p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
+    
+    .visual-stack { position: relative; padding: 2rem; }
+    .visual-main { width: 100%; height: 600px; object-fit: cover; border-radius: 2px; }
+    .visual-sub { 
+      position: absolute; bottom: -40px; left: -40px; 
+      width: 250px; height: 300px; object-fit: cover; 
+      border: 10px solid var(--bg-dark); box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+
+    /* --- Signature Events (The Summit) --- */
+    .events-highlight { padding: 8rem 0; background: #0f0d0b; border-top: 1px solid #1a1612; }
+    .event-card-premium {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      background: #161412;
+      border: 1px solid rgba(181, 145, 99, 0.1);
+      border-radius: 4px;
       overflow: hidden;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.08"><path d="M20 20 L 40 20 L 40 40 L 20 40 Z" fill="none" stroke="%23c2a27e" stroke-width="0.6"/><path d="M60 60 L 80 60 L 80 80 L 60 80 Z" fill="none" stroke="%23c2a27e" stroke-width="0.6"/><path d="M10 70 L 25 70 L 25 85 L 10 85 Z" fill="none" stroke="%23c2a27e" stroke-width="0.5"/><path d="M80 20 L 95 20 L 95 35 L 80 35 Z" fill="none" stroke="%23c2a27e" stroke-width="0.5"/></svg>');
-      background-repeat: repeat;
-      pointer-events: none;
-    }
-    .hero-content {
-      max-width: 1000px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 4rem 2rem;
-      position: relative;
-      z-index: 3;
-    }
-    .hero-sup {
-      font-size: 1rem;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-      color: #d6b28c;
-      margin-bottom: 1rem;
-      font-weight: 300;
-      word-spacing: 4px;
-    }
-    .hero h1 {
-      font-size: clamp(3rem, 10vw, 6rem);
-      font-weight: 300;
-      line-height: 1.1;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      color: #fcf3e7;
-    }
-    .hero h1 strong {
-      font-weight: 600;
-      background: linear-gradient(135deg, #f6d7b0, #e6b882);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-tag {
-      font-size: 1.4rem;
-      letter-spacing: 3px;
-      font-weight: 300;
-      border-top: 2px solid #ac8d67;
-      border-bottom: 2px solid #ac8d67;
+    .event-poster { width: 100%; height: 100%; object-fit: cover; }
+    .event-details-box { padding: 5rem; display: flex; flex-direction: column; justify-content: center; }
+    
+    .event-label { color: var(--gold-mid); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 1rem; }
+    .event-title-p { font-size: 3rem; font-weight: 300; line-height: 1; margin-bottom: 2rem; }
+    
+    .info-strip { display: flex; gap: 3rem; margin-bottom: 3rem; border-bottom: 1px solid #2a2622; padding-bottom: 2rem; }
+    .info-strip b { display: block; color: var(--gold-light); font-size: 1.1rem; }
+    .info-strip span { font-size: 0.7rem; text-transform: uppercase; color: #666; letter-spacing: 2px; }
+
+    .btn-luxury {
       display: inline-block;
-      padding: 0.6rem 2rem;
-      margin-top: 1.2rem;
-      color: #ebd6bf;
-      backdrop-filter: blur(2px);
-    }
-    .hero-desc {
-      max-width: 750px;
-      margin: 2.5rem auto 0;
-      font-size: 1.15rem;
-      color: #cfbcab;
-    }
-
-    /* mantra / identity block */
-    .mantra {
-      background: #12100e;
-      padding: 4rem 2rem;
-      border-top: 1px solid #2f2a24;
-      border-bottom: 1px solid #2f2a24;
-    }
-    .mantra-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 3.5rem 5rem;
-      text-align: center;
-    }
-    .mantra-item {
-      font-size: 2.2rem;
-      font-weight: 200;
+      padding: 1.2rem 3rem;
+      background: var(--gold-deep);
+      color: #000;
       text-transform: uppercase;
-      letter-spacing: 6px;
-      line-height: 1.3;
-    }
-    .mantra-item small {
-      display: block;
-      font-size: 0.9rem;
-      letter-spacing: 4px;
-      color: #ae8d68;
-      margin-top: 0.4rem;
-      font-weight: 400;
-    }
-
-    /* pillars / features */
-    .pillars {
-      padding: 5rem 2rem;
-      background: #0f0d0b;
-    }
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 300;
-      text-align: center;
-      margin-bottom: 4rem;
-      color: #f1decb;
-    }
-    .section-title span {
-      border-bottom: 3px solid #b59163;
-      padding-bottom: 0.5rem;
-    }
-    .pillar-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: #1e1b17;
-      border: 1px solid #352f28;
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .card:hover {
-      border-color: #aa855b;
-      transform: translateY(-6px);
-      background: #231f1b;
-    }
-    .card i {
-      font-size: 2.5rem;
-      color: #c7a16e;
-      margin-bottom: 1.5rem;
-    }
-    .card h3 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      letter-spacing: 1.5px;
-      margin-bottom: 1rem;
-      color: #f1dccb;
-    }
-    .card p {
-      color: #b9a48e;
-      font-size: 0.95rem;
-    }
-
-    /* movement quote */
-    .movement {
-      background: #080604;
-      padding: 5rem 2rem;
-      background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><polygon points="20,20 35,5 50,20 35,35" fill="%23b79b79"/><polygon points="70,60 85,45 100,60 85,75" fill="%23b79b79"/></svg>');
-      background-size: cover;
-      background-blend-mode: overlay;
-      border-top: 1px solid #4d3f30;
-      border-bottom: 1px solid #4d3f30;
-    }
-    .movement blockquote {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 2rem;
-      font-weight: 300;
-      line-height: 1.5;
-      text-align: center;
-      color: #eddccb;
-    }
-    .movement cite {
-      display: block;
-      margin-top: 2rem;
-      font-size: 1.1rem;
       letter-spacing: 3px;
-      color: #c4a27c;
-      text-transform: uppercase;
-    }
-
-    /* featured / stories preview */
-    .featured-stories {
-      padding: 5rem 2rem;
-      background: #100e0c;
-    }
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-    }
-    .story-item {
-      background: #191613;
-      border: 1px solid #332d25;
-    }
-    .story-img {
-      height: 240px;
-      background: linear-gradient(145deg, #2d271f, #15120e);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #836e53;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      border-bottom: 2px solid #5b4b38;
-    }
-    .story-content {
-      padding: 1.8rem 1.5rem;
-    }
-    .story-content h4 {
-      font-size: 1.4rem;
-      font-weight: 300;
-      margin-bottom: 0.5rem;
-      color: #e2cfb9;
-    }
-    .story-content p {
-      color: #aa9885;
-      font-size: 0.9rem;
-    }
-    .story-meta {
-      margin-top: 1.2rem;
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      color: #b59163;
-    }
-
-    /* quote banner */
-    .identity-banner {
-      background: #2b231c;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .identity-banner h2 {
-      font-size: clamp(2rem, 5vw, 3.8rem);
-      font-weight: 300;
-      text-transform: uppercase;
-      color: #fae8d6;
-      line-height: 1.3;
-    }
-    .identity-banner h2 em {
-      font-style: normal;
       font-weight: 600;
-      color: #eecbad;
-      display: inline-block;
-      margin: 0 1rem;
-    }
-
-    /* footer */
-    .footer {
-      background: #070605;
-      padding: 3rem 2rem 2rem;
-      border-top: 2px solid #3f3429;
-    }
-    .footer-main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
-    .footer-logo {
-      font-size: 1.8rem;
-      letter-spacing: 4px;
-      color: #c9af90;
-      font-weight: 300;
-    }
-    .footer-logo span {
-      font-weight: 600;
-      color: #f0dac5;
-    }
-    .social {
-      display: flex;
-      gap: 2rem;
-      font-size: 1.8rem;
-    }
-    .social a {
-      color: #9e8469;
-      transition: color 0.3s;
-    }
-    .social a:hover {
-      color: #ebc9a6;
-    }
-    .footer-bottom {
-      text-align: center;
       font-size: 0.8rem;
-      letter-spacing: 1px;
-      color: #6d5d4b;
-      border-top: 1px solid #2e271f;
-      padding-top: 2rem;
+      text-decoration: none;
+      transition: var(--transition);
+      width: fit-content;
     }
-    .footer-bottom i {
-      color: #ac8b64;
-      margin: 0 4px;
-    }
+    .btn-luxury:hover { background: var(--gold-light); transform: translateY(-5px); }
 
-    @media (max-width: 800px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .logo {
-        border-right: none;
-        padding-right: 0;
-      }
-      .nav-links {
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .story-grid {
-        grid-template-columns: 1fr;
-      }
-      .mantra-item {
-        font-size: 1.5rem;
-        letter-spacing: 3px;
-      }
-      .movement blockquote {
-        font-size: 1.5rem;
-      }
+    /* --- Footer --- */
+    .footer { background: #050505; padding: 6rem 2rem 3rem; border-top: 1px solid #1a1612; }
+    .footer-main { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; }
+    .social-icons { display: flex; gap: 2.5rem; }
+    .social-icons a { color: var(--gold-mid); font-size: 1.4rem; transition: var(--transition); }
+    .social-icons a:hover { color: #fff; transform: scale(1.2); }
+    
+    @media (max-width: 992px) {
+      .editorial-grid, .event-card-premium { grid-template-columns: 1fr; }
+      .navbar { padding: 1.5rem 2rem; }
+      .event-details-box { padding: 3rem 2rem; }
+      .visual-sub { display: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="navbar">
-      <div class="logo"><span>OSARONNO</span> FASHION TV</div>
-      <div class="nav-links">
-        <a href="index.html">HOME </a>
-        <a href="about.html">About Us </a>
-        <a href="events.html">Events </a>
-       
-        <a href="contact.html">Contact Us </a>
-        
+
+  <nav class="navbar">
+    <div class="logo">OSARONNO <span>FASHION TV</span></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <p class="hero-sup">Africa's Premier Fashion & Beauty Platform</p>
+      <h1>BEYOND THE <b>RUNWAY</b><br>BEYOND THE <b>ORDINARY</b></h1>
+      <div style="margin-top: 3rem;">
+        <a href="#about" class="btn-luxury">Explore the Vision</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero: Beyond the runway -->
-<section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.pinimg.com/1200x/38/a8/ca/38a8ca229badd6aba9e22aa7620ceefd.jpg'); background-size: cover; background-position: center;">
-    <div class="hero-content">
-        <div class="hero-sup">Africa's N°1 fashion & beauty platform</div>
-        <h1>BEYOND THE <strong>RUNWAY.</strong><br>BEYOND THE <strong>ORDINARY.</strong></h1>
-        <div class="hero-tag">boldly redefining style</div>
-        
-    </div>
-</section>
-<!-- About Us / Our Story section -->
-<section class="about" id="about">
+  <section class="about-section" id="about">
     <div class="container">
-        <h2 class="section-title"><span>Our Story</span></h2>
-        
-        <div class="about-content">
-            <div class="about-text">
-                <p class="about-lead">
-                    Osaronno Fashion TV is Africa's leading voice in fashion and beauty — a platform born from the heartbeat of the continent, where heritage collides with tomorrow's edge.
-                </p>
-                
-                
-                
-                <p>
-                    In a world that often reduces African fashion to clichés, we go <strong>beyond the ordinary</strong>. 
-                    We celebrate the tailors who weave stories into every thread, the visionaries blending Ankara with couture precision, the beauty disruptors redefining glow for melanated skin, and the entrepreneurs building empires from passion.
-                </p>
-                
-                <blockquote class="about-quote">
-                    "Fashion is not just what we wear — it is how we tell the world who we are, who we've been, and who we are becoming."
-                    <cite>— The Osaronno ethos</cite>
-                </blockquote>
-                
-                <p>
-                    Through raw runway footage, intimate designer conversations, trend intelligence, cultural deep-dives, and unfiltered business insights, Osaronno Fashion TV captures the pulse of a continent in motion — bold, boundless, and beautifully unfiltered.
-                </p>
-            </div>
-            
-            <div class="about-visuals">
-                <div class="visual-grid">
-                    <div class="visual-item large">
-                        <img src="vg (1).jpg" alt="Vibrant African fashion collective in bold prints">
-                    </div>
-                    <div class="visual-item">
-                        <img src="https://static.wixstatic.com/media/183f84_9c493c23d72c4bc2a29e51e16c7b8e7e~mv2.png/v1/fill/w_980,h_551,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/183f84_9c493c23d72c4bc2a29e51e16c7b8e7e~mv2.png" alt="Contemporary African runway looks">
-                    </div>
-                    <div class="visual-item">
-                        <img src=" https://i.pinimg.com/1200x/30/f7/8a/30f78aeaf48a6c28d080a2c3faee95dd.jpg " alt="Rich Ankara textile details">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style> 
-.about {
-    padding: 6rem 2rem;
-    background: #0f0d0b;
-    border-top: 1px solid #2f2a24;
-    border-bottom: 1px solid #2f2a24;
-}
-
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.about-lead {
-    font-size: 1.6rem;
-    font-weight: 300;
-    letter-spacing: 1.5px;
-    color: #e2d0b8;
-    margin-bottom: 2rem;
-    line-height: 1.4;
-}
-
-.about-text p {
-    font-size: 1.15rem;
-    color: #cfbcab;
-    margin-bottom: 1.8rem;
-}
-
-.about-quote {
-    font-size: 1.8rem;
-    font-weight: 300;
-    font-style: italic;
-    color: #eddccb;
-    margin: 3rem 0;
-    padding: 0 2rem;
-    border-left: 3px solid #b59163;
-    line-height: 1.5;
-}
-
-.about-quote cite {
-    display: block;
-    margin-top: 1.2rem;
-    font-size: 1rem;
-    font-style: normal;
-    letter-spacing: 3px;
-    color: #c4a27c;
-    text-transform: uppercase;
-}
-
-.about-visuals .visual-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1.5rem;
-}
-
-.visual-item {
-    overflow: hidden;
-    border-radius: 4px;
-    border: 1px solid #352f28;
-    transition: transform 0.4s ease;
-}
-
-.visual-item:hover {
-    transform: scale(1.04);
-}
-
-.visual-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.visual-item.large {
-    grid-row: span 2;
-    height: 520px;
-}
-
-@media (max-width: 900px) {
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-visuals .visual-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .visual-item.large {
-        height: 400px;
-    }
-}
-
-@media (max-width: 600px) {
-    .about {
-        padding: 3rem 1.5rem;
-    }
-    
-    .about-lead {
-        font-size: 1.3rem;
-        letter-spacing: 0.5px;
-        margin-bottom: 1.5rem;
-    }
-    
-    .about-text p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-    }
-    
-    .about-quote {
-        font-size: 1.4rem;
-        padding: 0 1.5rem;
-        margin: 2rem 0;
-    }
-    
-    .about-visuals .visual-grid {
-        gap: 1rem;
-    }
-    
-    .visual-item.large {
-        height: 300px;
-        grid-row: span 1;
-    }
-    
-    .visual-item {
-        height: 250px;
-    }
-}
-
-</style>
-<!-- Events / Upcoming Summit section -->
-<section class="events" id="events">
-  <div class="container">
-    <h2 class="section-title"><span>Our Signature Events</span></h2>
-    
-    <div class="event-highlight">
-      <div class="event-poster">
-        <!-- Replace with your actual flyer image or a hero banner; using a placeholder from your flyer style -->
-        <img src="p1 (1).PNG" alt="Osaronno Fashion TV Fashion Business Summit Poster" class="poster-img">
-        <!-- Or use one of your edited promo images for consistency -->
-        <!-- <img src="your-promo-image.jpg" alt="Summit Promo" class="poster-img"> -->
-      </div>
-      
-      <div class="event-details">
-        <h3 class="event-title">Fashion Business Summit</h3>
-        <p class="event-subtitle">Presented by Osaronno Fashion TV</p>
-        
-        <div class="event-info-grid">
-          <div class="info-item">
-            <span class="label">Date</span>
-            <span class="value">April 2nd, 2026</span>
-          </div>
-          <div class="info-item">
-            <span class="label">Time</span>
-            <span class="value">9:00 AM – 7:00 PM</span>
-          </div>
-          <div class="info-item full">
-            <span class="label">Venue</span>
-            <span class="value">Shehu Musa Yar'Adua Centre,<br>Abuja, Nigeria</span>
+      <div class="editorial-grid">
+        <div class="about-text">
+          <h2 class="event-label">Our Story</h2>
+          <p class="about-lead">Heritage collides with tomorrow's edge.</p>
+          <p>Osaronno Fashion TV is Africa's leading voice in fashion and beauty—a platform born from the heartbeat of the continent. We go beyond the clichés of African style.</p>
+          <p>We celebrate the tailors who weave stories into every thread, the visionaries blending Ankara with couture precision, and the disruptors redefining beauty for melanated skin.</p>
+          <div style="margin-top: 2rem;">
+            <a href="about.html" class="btn-luxury" style="background: transparent; border: 1px solid var(--gold-deep); color: var(--gold-deep);">Read Full Ethos</a>
           </div>
         </div>
-        
-        <p class="event-desc">
-          Join Africa's premier platform for fashion and beauty as we convene industry leaders, designers, entrepreneurs, innovators, and visionaries for a full-day immersion into the business of style. 
-          This isn't just another summit — it's where creativity meets commerce, heritage fuels innovation, and the future of African fashion is boldly shaped.
-        </p>
-        
-        <ul class="event-highlights">
-          <li>Keynote sessions on scaling fashion brands across Africa and global markets</li>
-          <li>Panel discussions with top designers, retailers, and investors</li>
-          <li>Networking opportunities with industry stakeholders and emerging talents</li>
-          <li>Trend forecasting, business intelligence, and luxury market insights</li>
-          <li>Live showcases spotlighting creativity, innovation, and cultural luxury</li>
-        </ul>
-        
-        <div class="event-cta">
-          <a href="Tickets.html" class="btn primary">Register Interest / Get Tickets</a>
-         
-        </div>
-        
-        <div class="event-contact">
-          <p>For more information:</p>
-          <p class="phone">📞 0704 5333 3306 | 0909 9998 8055</p>
-          <p>Follow us: <a href="https://www.instagram.com/osaronnofashiontv/">@OsaronnonofashionTV</a> on Instagram • YouTube • TikTok</p>
+        <div class="visual-stack">
+          <img src="vg (1).jpg" alt="Fashion Collective" class="visual-main">
+          <img src="https://i.pinimg.com/1200x/30/f7/8a/30f78aeaf48a6c28d080a2c3faee95dd.jpg" alt="Textile Detail" class="visual-sub">
         </div>
       </div>
     </div>
-    
-    <!-- Optional: Add more upcoming/past events in a grid later -->
-    <p class="coming-soon">More events and summits coming soon — stay tuned for exclusive announcements.</p>
-  </div>
-</section>
+  </section>
 
-<style> 
-.events {
-  padding: 6rem 2rem;
-  background: #0f0d0b;
-  border-top: 1px solid #2f2a24;
-  border-bottom: 1px solid #2f2a24;
-}
+  <section class="events-highlight">
+    <div class="container">
+      <h2 class="event-label" style="text-align: center; margin-bottom: 4rem;">Signature Experience</h2>
+      <div class="event-card-premium">
+        <img src="p1 (1).PNG" alt="Summit Poster" class="event-poster">
+        <div class="event-details-box">
+          <h3 class="event-title-p">Fashion Business <br>Summit 2026</h3>
+          
+          <div class="info-strip">
+            <div><span>Date</span><b>April 2nd, 2026</b></div>
+            <div><span>Location</span><b>Abuja, Nigeria</b></div>
+          </div>
+          
+          <p style="color: var(--text-muted); margin-bottom: 3rem;">
+            Join Africa's premier platform as we convene industry leaders, designers, and innovators for a full-day immersion into the business of style. Creativity meets commerce.
+          </p>
+          
+          <a href="Tickets.html" class="btn-luxury">Secure Your Pass</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-.event-highlight {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.event-poster {
-  border: 1px solid #352f28;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
-.poster-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-.event-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 300;
-  letter-spacing: 4px;
-  color: #f5d7b5;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.event-subtitle {
-  font-size: 1.3rem;
-  color: #c9a87c;
-  letter-spacing: 3px;
-  margin-bottom: 2rem;
-}
-
-.event-info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem 3rem;
-  margin: 2rem 0;
-}
-
-.info-item {
-  font-size: 1.1rem;
-}
-
-.label {
-  display: block;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  color: #ae8d68;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
-.value {
-  color: #ebd6bf;
-  font-weight: 500;
-}
-
-.full {
-  grid-column: 1 / -1;
-}
-
-.event-desc {
-  font-size: 1.15rem;
-  color: #cfbcab;
-  margin: 2rem 0;
-  line-height: 1.6;
-}
-
-.event-highlights {
-  list-style: none;
-  margin: 2rem 0;
-  padding-left: 0;
-}
-
-.event-highlights li {
-  font-size: 1.05rem;
-  color: #d6b28c;
-  margin-bottom: 1rem;
-  position: relative;
-  padding-left: 1.8rem;
-}
-
-.event-highlights li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #b59163;
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.event-cta {
-  display: flex;
-  gap: 1.5rem;
-  margin: 2.5rem 0;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 1px solid #b59163;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.btn.primary {
-  background: linear-gradient(135deg, #b59163, #c9a87c);
-  color: #0b0a0a;
-  border: none;
-}
-
-.btn.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(181,145,99,0.3);
-}
-
-.btn.secondary {
-  color: #f5d7b5;
-  background: transparent;
-}
-
-.btn.secondary:hover {
-  background: rgba(181,145,99,0.1);
-  color: #fae1bd;
-}
-
-.event-contact {
-  font-size: 1rem;
-  color: #aa9885;
-  margin-top: 2rem;
-}
-
-.event-contact .phone {
-  font-size: 1.2rem;
-  color: #e2d0b8;
-  margin: 0.8rem 0;
-}
-
-.coming-soon {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #c4a27c;
-  margin-top: 4rem;
-  font-style: italic;
-}
-
-@media (max-width: 900px) {
-  .event-highlight {
-    grid-template-columns: 1fr;
-  }
-  
-  .event-poster {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-}
-
-</style>
-  <!-- footer with tagline -->
   <footer class="footer">
     <div class="container">
       <div class="footer-main">
-        <div class="footer-logo"><span>OSARONNO</span> FASHION TV</div>
-        <div class="social">
+        <div class="logo">OSARONNO <span>FASHION TV</span></div>
+        <div class="social-icons">
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-x-twitter"></i></a>
           <a href="#"><i class="fab fa-youtube"></i></a>
           <a href="#"><i class="fab fa-spotify"></i></a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 Osaronno Fashion TV — where fashion meets influence, culture meets royalty, and style becomes a statement.</p>
-        <p style="margin-top: 1rem;"><i class="fas fa-route"></i>  Beyond the Runway.  Beyond the Ordinary.  <i class="fas fa-crown" style="font-size: 0.7rem;"></i></p>
+      <div style="text-align: center; border-top: 1px solid #1a1612; padding-top: 3rem;">
+        <p style="font-size: 0.7rem; color: #444; letter-spacing: 2px;">© 2026 OSARONNO FASHION TV • STYLE BECOMES A STATEMENT</p>
+        <p style="font-size: 0.6rem; color: var(--gold-deep); margin-top: 10px; text-transform: uppercase; letter-spacing: 4px;">Beyond the Runway. Beyond the Ordinary.</p>
       </div>
     </div>
   </footer>
 
-  <!-- subtle decorative line (optional) -->
-  <div style="background: #19130d; height: 4px; width: 100%;"></div>
 </body>
 </html>
