@@ -33,7 +33,7 @@
       overflow-x: hidden;
     }
 
-    /* --- Navigation (Sticky & Glassmorphism) --- */
+    /* --- Navigation (Sticky, Glassmorphism & Mobile Ready) --- */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -46,7 +46,6 @@
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(181, 145, 99, 0.1);
-      transition: var(--transition);
     }
 
     .logo {
@@ -89,6 +88,21 @@
     }
     .nav-links a:hover { color: #fff; }
 
+    /* Hamburger Menu Icon */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+      z-index: 1001;
+    }
+    .bar {
+      width: 25px;
+      height: 2px;
+      background-color: var(--gold-light);
+      transition: var(--transition);
+    }
+
     /* --- Page Header --- */
     .page-header {
       padding: 8rem 2rem 4rem;
@@ -110,20 +124,9 @@
     }
 
     /* --- Editorial Grid Section --- */
-    .about-deep {
-      padding: 6rem 0;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 5rem;
-      align-items: center;
-    }
+    .about-deep { padding: 6rem 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5rem; align-items: center; }
 
     .about-text-block h2 {
       font-size: 2.8rem;
@@ -148,23 +151,11 @@
       border-top: 1px solid rgba(181, 145, 99, 0.2);
       padding-top: 2rem;
     }
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 200;
-      color: var(--gold-mid);
-      display: block;
-    }
-    .stat-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #888;
-    }
+    .stat-number { font-size: 2.5rem; font-weight: 200; color: var(--gold-mid); display: block; }
+    .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #888; }
 
     /* Editorial Image Stack */
-    .about-image-col {
-      position: relative;
-    }
+    .about-image-col { position: relative; }
     .main-img {
       width: 100%;
       height: 500px;
@@ -189,34 +180,13 @@
       border: 4px solid var(--bg-dark);
       box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
-    .main-img:hover { filter: grayscale(0%); transform: scale(1.02); }
 
     /* --- Identity Pillars --- */
-    .values {
-      background: var(--bg-accent);
-      padding: 6rem 2rem;
-      margin: 4rem 0;
-    }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 3rem;
-      text-align: center;
-    }
-    .value-item {
-      font-size: 1.5rem;
-      font-weight: 200;
-      letter-spacing: 4px;
-      transition: var(--transition);
-    }
+    .values { background: var(--bg-accent); padding: 6rem 2rem; margin: 4rem 0; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center; }
+    .value-item { font-size: 1.5rem; font-weight: 200; letter-spacing: 4px; transition: var(--transition); }
     .value-item:hover { transform: translateY(-10px); color: var(--gold-light); }
-    .value-item small {
-      display: block;
-      font-size: 0.7rem;
-      color: var(--gold-deep);
-      margin-top: 0.5rem;
-      letter-spacing: 2px;
-    }
+    .value-item small { display: block; font-size: 0.7rem; color: var(--gold-deep); margin-top: 0.5rem; letter-spacing: 2px; }
 
     /* --- Quote Section --- */
     .quote-section {
@@ -227,51 +197,43 @@
       background-attachment: fixed;
       background-position: center;
     }
-    .quote-section h2 {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      font-style: italic;
-      font-weight: 200;
-    }
 
     /* --- Footer --- */
-    .footer {
-      background: #050505;
-      padding: 5rem 2rem 2rem;
-      border-top: 1px solid #1a1612;
-    }
-    .footer-main {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 4rem;
-    }
-    .social-icons {
-      display: flex;
-      gap: 2rem;
-    }
-    .social-icons a {
-      color: var(--gold-mid);
-      font-size: 1.2rem;
-      transition: var(--transition);
-    }
+    .footer { background: #050505; padding: 5rem 2rem 2rem; border-top: 1px solid #1a1612; }
+    .footer-main { display: flex; justify-content: space-between; align-items: center; padding-bottom: 4rem; }
+    .social-icons { display: flex; gap: 2rem; }
+    .social-icons a { color: var(--gold-mid); font-size: 1.2rem; transition: var(--transition); }
     .social-icons a:hover { color: #fff; transform: translateY(-3px); }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 2rem;
-      text-align: center;
-      font-size: 0.7rem;
-      color: #555;
-      letter-spacing: 1px;
-    }
-
-    /* --- Responsive --- */
+    /* --- RESPONSIVE BREAKPOINT (Mobile Fixes) --- */
     @media (max-width: 992px) {
+      .navbar { padding: 1.5rem 2rem; }
+      
+      .menu-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        background: rgba(11, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .nav-links.active { right: 0; }
+
+      .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+      .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .image-stack { margin-top: 1rem; margin-left: 0; }
-      .navbar { padding: 1.5rem 2rem; }
+      .footer-main { flex-direction: column; gap: 2rem; text-align: center; }
     }
   </style>
 </head>
@@ -279,7 +241,14 @@
 
   <nav class="navbar">
     <div class="logo">OSARONNO <span>FASHION TV</span></div>
-    <div class="nav-links">
+    
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About</a>
       <a href="events.html">Events</a>
@@ -363,6 +332,23 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('#nav-links');
+
+    menu.addEventListener('click', function() {
+      menu.classList.toggle('active');
+      menuLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        menuLinks.classList.remove('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
