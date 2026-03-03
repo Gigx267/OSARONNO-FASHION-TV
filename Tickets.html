@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickets • Fashion Business Summit 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0b0a0a;
+      --bg-card: #161412;
+      --gold-light: #f5d7b5;
+      --gold-mid: #c9a87c;
+      --gold-deep: #b59163;
+      --text-main: #f0e9e1;
+      --text-muted: #cfbcab;
+      --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-dark);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+    /* --- Navigation --- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 10, 10, 0.85);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(181, 145, 99, 0.1);
+    }
+
+    .logo { font-size: 1.4rem; font-weight: 200; text-transform: uppercase; letter-spacing: 5px; color: var(--gold-light); }
+    .logo span { font-weight: 600; color: #fff; }
+
+    /* --- Ticket Header --- */
+    .ticket-header {
+      padding: 6rem 0 3rem;
+      text-align: center;
+    }
+
+    .ticket-header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 200;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .ticket-header h1 b { color: var(--gold-mid); font-weight: 600; }
+
+    /* --- Booking Layout --- */
+    .booking-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      margin-bottom: 8rem;
+    }
+
+    /* Event Details Card */
+    .event-info-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(181, 145, 99, 0.2);
+      padding: 3rem;
+      border-radius: 4px;
+      height: fit-content;
+    }
+
+    .info-item { margin-bottom: 2rem; }
+    .info-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold-mid);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .info-detail { font-size: 1.1rem; color: #fff; font-weight: 300; }
+
+    /* Form Styling */
+    .ticket-form {
+      background: #0f0d0b;
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .form-section-title {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      color: var(--gold-light);
+      border-bottom: 1px solid #222;
+      padding-bottom: 1rem;
+    }
+
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 1rem;
+      background: #161412;
+      border: 1px solid #333;
+      color: #fff;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold-mid);
+      background: #1c1a18;
+    }
+
+    .ticket-tier-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .tier-option {
+      border: 1px solid #333;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tier-option input { display: none; }
+    .tier-option:hover { border-color: var(--gold-mid); }
+    
+    .tier-option.selected {
+      border-color: var(--gold-deep);
+      background: rgba(181, 145, 99, 0.1);
+    }
+
+    .submit-booking {
+      width: 100%;
+      padding: 1.2rem;
+      background: var(--gold-deep);
+      color: #000;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .submit-booking:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    /* --- Footer --- */
+    .footer { background: #050505; padding: 4rem 2rem; border-top: 1px solid #1a1612; text-align: center; }
+    .footer p { font-size: 0.75rem; color: #444; letter-spacing: 1px; }
+
+    @media (max-width: 992px) {
+      .booking-wrapper { grid-template-columns: 1fr; }
+      .navbar { padding: 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">OSARONNO <span>FASHION TV</span></div>
+    <div style="font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;">
+        <a href="events.html" style="color: var(--gold-mid); text-decoration: none;">← Back to Events</a>
+    </div>
+  </nav>
+
+  <header class="ticket-header">
+    <div class="container">
+      <h1>Secure Your <b>Pass</b></h1>
+      <p style="color: var(--gold-mid); text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem;">Fashion Business Summit 2026</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="booking-wrapper">
+      
+      <aside class="event-info-card">
+        <div class="info-item">
+          <span class="info-label">Venue</span>
+          <p class="info-detail">Shehu Musa Yar'Adua Centre, Abuja</p>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Date & Time</span>
+          <p class="info-detail">April 2nd, 2026 • 09:00 AM</p>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Entry Policy</span>
+          <p class="info-detail" style="font-size: 0.9rem; color: var(--text-muted);">Strictly Formal / Cultural Luxury. Please present your digital ticket at the entrance.</p>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 2rem;">
+        <p style="font-size: 0.75rem; opacity: 0.6; line-height: 1.4;">
+            Tickets are non-refundable but transferable. For corporate bulk bookings, please contact us directly at events@osaronnofashiontv.com.
+        </p>
+      </aside>
+
+      <section class="ticket-form">
+        <h3 class="form-section-title">Registration Details</h3>
+        
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" name="name" id="full-name" placeholder="As it appears on ID" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" placeholder="for ticket delivery" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" name="phone" id="phone" placeholder="+234..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="industry">Your Industry/Role</label>
+            <select name="industry" id="industry" required style="background: #161412; color: #fff; border: 1px solid #333; padding: 1rem; width: 100%;">
+                <option value="" disabled selected>Select your profile</option>
+                <option value="Designer">Fashion Designer</option>
+                <option value="Retail">Retail & Merchandising</option>
+                <option value="Media">Media & Press</option>
+                <option value="Investor">Investor / Partner</option>
+                <option value="Student">Student / Enthusiast</option>
+            </select>
+          </div>
+
+          <label class="form-group" style="margin-top: 2.5rem; display: block;">
+            <span class="info-label">Select Access Level</span>
+          </label>
+          
+          <div class="ticket-tier-selector">
+            <label class="tier-option" onclick="selectTier(this)">
+                <input type="radio" name="ticket_type" value="Standard" required>
+                <div style="color: #fff; font-weight: 600;">STANDARD</div>
+                <div style="font-size: 0.7rem; color: var(--gold-mid);">₦15,000</div>
+            </label>
+            <label class="tier-option" onclick="selectTier(this)">
+                <input type="radio" name="ticket_type" value="VIP">
+                <div style="color: #fff; font-weight: 600;">VIP PASS</div>
+                <div style="font-size: 0.7rem; color: var(--gold-mid);">₦50,000</div>
+            </label>
+          </div>
+
+          <input type="hidden" name="_subject" value="New Ticket Registration: Fashion Business Summit 2026">
+          
+          <button type="submit" class="submit-booking">Generate Reservation</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 OSARONNO FASHION TV. THE ROYALTY OF STYLE.</p>
+  </footer>
+
+  <script>
+    function selectTier(element) {
+      // Remove selected class from all tiers
+      document.querySelectorAll('.tier-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      // Add to clicked one
+      element.classList.add('selected');
+    }
+  </script>
+
+</body>
+</html>
