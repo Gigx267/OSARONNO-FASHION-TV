@@ -3,10 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Osaronno Fashion TV • About Us</title>
-  <!-- Font Awesome 6 (free) -->
+  <title>About Us • Osaronno Fashion TV</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --bg-dark: #0b0a0a;
+      --bg-accent: #12100e;
+      --gold-light: #f5d7b5;
+      --gold-mid: #c9a87c;
+      --gold-deep: #b59163;
+      --text-main: #f0e9e1;
+      --text-muted: #cfbcab;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,456 +26,343 @@
     }
 
     body {
-      background-color: #0b0a0a;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      color: #f0e9e1;
-      line-height: 1.5;
-      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
-
-    h1, h2, h3 {
-      font-weight: 400;
-      letter-spacing: 0.02em;
-    }
-
-    .container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* header / nav – exactly same as home for consistency */
+    /* --- Navigation (Sticky & Glassmorphism) --- */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem 2rem;
-      border-bottom: 1px solid rgba(255, 215, 170, 0.15);
-      flex-wrap: wrap;
+      padding: 1.5rem 4rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 10, 10, 0.8);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(181, 145, 99, 0.1);
+      transition: var(--transition);
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: 300;
+      font-size: 1.4rem;
+      font-weight: 200;
       text-transform: uppercase;
-      letter-spacing: 6px;
-      color: #f5d7b5;
-      border-right: 2px solid #c9a87c;
-      padding-right: 1.2rem;
+      letter-spacing: 5px;
+      color: var(--gold-light);
     }
     .logo span {
       font-weight: 600;
-      color: #fcf3e7;
-      letter-spacing: 2px;
+      color: #fff;
     }
+
     .nav-links {
       display: flex;
-      gap: 3rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
+      gap: 2.5rem;
     }
     .nav-links a {
-      color: #e1cfba;
+      color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.3s;
-      font-weight: 300;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: var(--transition);
+      position: relative;
     }
-    .nav-links a:hover {
-      color: #fae1bd;
-      border-bottom: 1px solid #b59470;
-      padding-bottom: 4px;
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--gold-deep);
+      transition: var(--transition);
     }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+    .nav-links a:hover { color: #fff; }
 
-    /* subtle active state for current page */
-    .nav-links a[href="about.html"] {
-      color: #fae1bd;
-      border-bottom: 1px solid #b59470;
-      padding-bottom: 4px;
-    }
-
-    /* small hero for about */
+    /* --- Page Header --- */
     .page-header {
-      background: linear-gradient(135deg, #1f1b16 0%, #0c0a08 100%);
-      padding: 4rem 2rem;
+      padding: 8rem 2rem 4rem;
       text-align: center;
-      border-bottom: 1px solid #3b3329;
+      background: radial-gradient(circle at top, #1f1b16 0%, #0b0a0a 70%);
     }
     .page-header h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 200;
       text-transform: uppercase;
-      letter-spacing: 8px;
-      color: #fcf3e7;
+      letter-spacing: 15px;
+      margin-bottom: 1rem;
     }
-    .page-header h1 strong {
+    .page-header h1 b {
       font-weight: 600;
-      background: linear-gradient(135deg, #f6d7b0, #e6b882);
+      background: linear-gradient(to right, var(--gold-light), var(--gold-deep));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .page-header p {
-      max-width: 700px;
-      margin: 1.5rem auto 0;
-      color: #cfbcab;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
     }
 
-    /* about section – rich narrative */
+    /* --- Editorial Grid Section --- */
     .about-deep {
-      padding: 5rem 2rem;
-      background: #0f0d0b;
+      padding: 6rem 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 5rem;
       align-items: center;
     }
+
     .about-text-block h2 {
-      font-size: 2.2rem;
+      font-size: 2.8rem;
+      line-height: 1.1;
       font-weight: 300;
-      color: #f1decb;
-      margin-bottom: 1.5rem;
-      border-left: 6px solid #b59163;
+      margin-bottom: 2rem;
+      color: var(--gold-light);
+    }
+    .lead {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      border-left: 3px solid var(--gold-deep);
       padding-left: 1.5rem;
     }
-    .about-text-block p {
-      font-size: 1.2rem;
-      color: #cfbcab;
-      margin-bottom: 2rem;
-      line-height: 1.7;
-    }
-    .about-text-block p.lead {
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: #e2d0b8;
-    }
-    .about-highlight {
-      background: #1e1b17;
-      border: 1px solid #352f28;
-      padding: 2rem;
-      margin: 2.5rem 0;
-      border-radius: 4px;
-    }
-    .about-highlight i {
-      color: #c7a16e;
-      font-size: 2rem;
-      margin-right: 1rem;
-    }
+
     .stats-mini {
       display: flex;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .stat-item {
-      text-align: center;
+      gap: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(181, 145, 99, 0.2);
+      padding-top: 2rem;
     }
     .stat-number {
       font-size: 2.5rem;
       font-weight: 200;
-      color: #f5d7b5;
-      line-height: 1;
+      color: var(--gold-mid);
+      display: block;
     }
     .stat-label {
       font-size: 0.7rem;
-      letter-spacing: 2px;
       text-transform: uppercase;
-      color: #9e8469;
+      letter-spacing: 2px;
+      color: #888;
     }
 
+    /* Editorial Image Stack */
     .about-image-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      position: relative;
     }
-    .about-image-col img {
+    .main-img {
       width: 100%;
-      height: auto;
-      border: 1px solid #4a3f33;
-      border-radius: 2px;
-      transition: transform 0.3s ease;
-    }
-    .about-image-col img:hover {
-      transform: scale(1.02);
+      height: 500px;
+      object-fit: cover;
+      filter: grayscale(30%);
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .image-stack {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
+      margin-top: -80px;
+      margin-left: -40px;
+      position: relative;
+      z-index: 10;
     }
+    .stack-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border: 4px solid var(--bg-dark);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .main-img:hover { filter: grayscale(0%); transform: scale(1.02); }
 
-    /* mantra / values (identity block from home but slightly adapted) */
+    /* --- Identity Pillars --- */
     .values {
-      background: #12100e;
-      padding: 4rem 2rem;
-      border-top: 1px solid #2f2a24;
-      border-bottom: 1px solid #2f2a24;
+      background: var(--bg-accent);
+      padding: 6rem 2rem;
+      margin: 4rem 0;
     }
     .values-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 3.5rem 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
       text-align: center;
     }
     .value-item {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 200;
-      text-transform: uppercase;
-      letter-spacing: 6px;
-      line-height: 1.3;
+      letter-spacing: 4px;
+      transition: var(--transition);
     }
+    .value-item:hover { transform: translateY(-10px); color: var(--gold-light); }
     .value-item small {
       display: block;
-      font-size: 0.8rem;
-      letter-spacing: 4px;
-      color: #ae8d68;
-      margin-top: 0.4rem;
-      font-weight: 400;
-    }
-
-    /* team / faces (symbolic) */
-    .team-section {
-      padding: 5rem 2rem;
-      background: #100e0c;
-    }
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 300;
-      text-align: center;
-      margin-bottom: 4rem;
-      color: #f1decb;
-    }
-    .section-title span {
-      border-bottom: 3px solid #b59163;
-      padding-bottom: 0.5rem;
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-    .team-card {
-      background: #191613;
-      border: 1px solid #332d25;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    .team-card .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #3d352b, #1f1b16);
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: #9e8469;
-      border: 2px solid #5b4b38;
-    }
-    .team-card h4 {
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: #e2cfb9;
-      margin-bottom: 0.2rem;
-    }
-    .team-card p {
-      color: #aa9885;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
+      color: var(--gold-deep);
+      margin-top: 0.5rem;
       letter-spacing: 2px;
-      text-transform: uppercase;
     }
 
-    /* footer – exact copy from home */
+    /* --- Quote Section --- */
+    .quote-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.pinimg.com/1200x/19/35/dc/1935dcf29fd656820daebf4a68dc6559.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    .quote-section h2 {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-style: italic;
+      font-weight: 200;
+    }
+
+    /* --- Footer --- */
     .footer {
-      background: #070605;
-      padding: 3rem 2rem 2rem;
-      border-top: 2px solid #3f3429;
+      background: #050505;
+      padding: 5rem 2rem 2rem;
+      border-top: 1px solid #1a1612;
     }
     .footer-main {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 3rem;
+      padding-bottom: 4rem;
     }
-    .footer-logo {
-      font-size: 1.8rem;
-      letter-spacing: 4px;
-      color: #c9af90;
-      font-weight: 300;
-    }
-    .footer-logo span {
-      font-weight: 600;
-      color: #f0dac5;
-    }
-    .social {
+    .social-icons {
       display: flex;
       gap: 2rem;
-      font-size: 1.8rem;
     }
-    .social a {
-      color: #9e8469;
-      transition: color 0.3s;
+    .social-icons a {
+      color: var(--gold-mid);
+      font-size: 1.2rem;
+      transition: var(--transition);
     }
-    .social a:hover {
-      color: #ebc9a6;
-    }
+    .social-icons a:hover { color: #fff; transform: translateY(-3px); }
+
     .footer-bottom {
-      text-align: center;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      color: #6d5d4b;
-      border-top: 1px solid #2e271f;
+      border-top: 1px solid rgba(255,255,255,0.05);
       padding-top: 2rem;
-    }
-    .footer-bottom i {
-      color: #ac8b64;
-      margin: 0 4px;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #555;
+      letter-spacing: 1px;
     }
 
-    /* responsiveness */
-    @media (max-width: 1000px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 800px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .logo {
-        border-right: none;
-        padding-right: 0;
-      }
-      .nav-links {
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-      .values-grid {
-        gap: 2rem;
-      }
-      .value-item {
-        font-size: 1.4rem;
-        letter-spacing: 3px;
-      }
+    /* --- Responsive --- */
+    @media (max-width: 992px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .image-stack { margin-top: 1rem; margin-left: 0; }
+      .navbar { padding: 1.5rem 2rem; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="navbar">
-      <div class="logo"><span>OSARONNO</span> FASHION TV</div>
-      <div class="nav-links">
-        <a href="index.html">HOME</a>
-        <a href="about.html">About Us</a>
-        <a href="events.html">Events</a>
-        
-        <a href="contact.html">Contact Us</a>
-      </div>
+
+  <nav class="navbar">
+    <div class="logo">OSARONNO <span>FASHION TV</span></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>THE <b>LEGACY</b></h1>
+      <p style="color: var(--gold-mid); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem;">Elevating African Excellence</p>
     </div>
   </header>
 
-  <!-- about page header -->
-
-
-  <!-- main about narrative (expanded) -->
   <section class="about-deep">
     <div class="container">
       <div class="about-grid">
         <div class="about-text-block">
           <h2>We are a cultural movement.</h2>
           <p class="lead">Osaronno Fashion TV was born from a singular truth: African fashion is not a trend — it is a timeless force.</p>
-          <p>From the ateliers of Dakar to the buzzing markets of Lagos, from the conceptual designers of Johannesburg to the global runways of Paris and New York, we exist to tell the stories that shape the future of style. We are not just a channel; we are a powerhouse spotlighting creativity, luxury, innovation, and the business of fashion across Africa and beyond.</p>
-          <div class="about-highlight">
-            <i class="fas fa-quote-left"></i> Fashion is more than fabric. It is identity. It is heritage. It is power.
-          </div>
-          <p>Through exclusive features, high-profile events, industry summits, designer showcases, celebrity highlights, and trend intelligence, we amplify African excellence and connect style to purpose. We don't just follow trends — we define them.</p>
+          <p>From the ateliers of Dakar to the buzzing markets of Lagos, we exist to tell the stories that shape the future of style. We are a powerhouse spotlighting luxury, innovation, and the business of fashion across Africa and beyond.</p>
+          
           <div class="stats-mini">
             <div class="stat-item">
-              <div class="stat-number">50+</div>
-              <div class="stat-label">Designers spotlighted</div>
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Designers</span>
             </div>
             <div class="stat-item">
-              <div class="stat-number">15</div>
-              <div class="stat-label">African countries</div>
+              <span class="stat-number">15</span>
+              <span class="stat-label">Countries</span>
             </div>
             <div class="stat-item">
-              <div class="stat-number">∞</div>
-              <div class="stat-label">stories beyond the runway</div>
+              <span class="stat-number">∞</span>
+              <span class="stat-label">Influence</span>
             </div>
           </div>
         </div>
+
         <div class="about-image-col">
-          <img src="https://i.pinimg.com/1200x/19/35/dc/1935dcf29fd656820daebf4a68dc6559.jpg " alt="African fashion on the runway" style="width:100%; max-height:320px; object-fit:cover;">
+          <img src="https://i.pinimg.com/1200x/19/35/dc/1935dcf29fd656820daebf4a68dc6559.jpg" alt="Runway" class="main-img">
           <div class="image-stack">
-            <img src="https://i.pinimg.com/1200x/6c/ed/89/6ced89b3c4c94dad81449b004f4d337b.jpg " alt="ankara textile detail" style="height:180px; object-fit:cover;">
-            <img src="p1 (2).PNG" alt="contemporary African looks" style="height:180px; object-fit:cover;">
+            <img src="https://i.pinimg.com/1200x/6c/ed/89/6ced89b3c4c94dad81449b004f4d337b.jpg" alt="Textile" class="stack-img">
+            <img src="p1 (2).PNG" alt="Editorial" class="stack-img">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- identity pillars / mantra (adapted) -->
   <section class="values">
     <div class="container">
       <div class="values-grid">
         <div class="value-item">FABRIC <small>texture of culture</small></div>
         <div class="value-item">IDENTITY <small>who we are</small></div>
         <div class="value-item">HERITAGE <small>royal thread</small></div>
-        <div class="value-item">POWER <small>influence</small></div>
+        <div class="value-item">POWER <small>global influence</small></div>
       </div>
     </div>
   </section>
 
-
-
-  <!-- extra narrative: heritage meets future (quote) -->
-  <section style="background:#2b231c; padding:3rem 2rem; text-align:center;">
+  <section class="quote-section">
     <div class="container">
-      <h2 style="font-size:clamp(1.8rem, 4vw, 2.8rem); font-weight:300; color:#fae8d6; max-width:900px; margin:0 auto;">
-        “We tell the stories that shape the future of fashion — from haute couture to street style, emerging designers to global icons.”
-      </h2>
-      <p style="margin-top:2rem; color:#c4a27c; letter-spacing:3px;">— OSARONNO FASHION TV</p>
+      <h2>“We tell the stories that shape the future of fashion — from haute couture to street style, emerging designers to global icons.”</h2>
+      <p style="margin-top: 3rem; color: var(--gold-light); letter-spacing: 5px;">OSARONNO FASHION TV</p>
     </div>
   </section>
 
-  <!-- footer exactly as home -->
   <footer class="footer">
     <div class="container">
       <div class="footer-main">
-        <div class="footer-logo"><span>OSARONNO</span> FASHION TV</div>
-        <div class="social">
-         <a href="https://www.instagram.com/osaronnofashiontv/"><i class="fab fa-instagram"></i></a>
-          <a href="https://x.com/OsaronnoFashionTV"><i class="fab fa-x-twitter"></i></a>
-          <a href=" https://www.youtube.com/@OsaronnoFashionTV"><i class="fab fa-youtube"></i></a>
-          <a href="https://www.youtube.com/@OsaronnoFashionTV "><i class="fab fa-spotify"></i></a>
+        <div class="logo">OSARONNO <span>FASHION TV</span></div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 Osaronno Fashion TV — where fashion meets influence, culture meets royalty, and style becomes a statement.</p>
-        <p style="margin-top: 1rem;"><i class="fas fa-route"></i>  Beyond the Runway.  Beyond the Ordinary.  <i class="fas fa-crown" style="font-size: 0.7rem;"></i></p>
+        <p>© 2026 OSARONNO FASHION TV. ALL RIGHTS RESERVED.</p>
+        <p style="margin-top: 10px; opacity: 0.5;">BEYOND THE RUNWAY. BEYOND THE ORDINARY.</p>
       </div>
     </div>
   </footer>
 
-  <!-- decorative line -->
-  <div style="background: #19130d; height: 4px; width: 100%;"></div>
 </body>
 </html>
